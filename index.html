@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahbaz Hussain - Android & Web Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#6366f1',
+                        'secondary': '#8b5cf6',
+                        'accent': '#f59e0b',
+                        'dark': '#0f0f23',
+                        'darker': '#0a0a1a',
+                        'card': '#1a1a2e',
+                        'border': '#2a2a3e',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        /* Network Animation */
+        .network-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .network-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #6366f1, transparent);
+            height: 1px;
+            animation: network-flow 3s linear infinite;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(26, 26, 46, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Custom Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+            }
+
+            to {
+                box-shadow: 0 0 30px rgba(99, 102, 241, 0.8);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes network-flow {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tech-icon {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .tech-icon:hover::before {
+            left: 100%;
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Typing Animation */
+        .typing-animation {
+            border-right: 2px solid #6366f1;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                border-color: #6366f1;
+            }
+
+            51%,
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        /* Progress Bar Animation */
+        .progress-bar {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(99, 102, 241, 0.2);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #8b5cf6, #6366f1);
+        }
+    </style>
+</head>
+
+<body class="text-white font-inter">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="network-bg" id="networkBg"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div
+                    class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    &lt;Shahbaz Hussain/&gt;
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="nav-link hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link hover:text-primary transition-colors">Projects</a>
+                    <a href="#experience" class="nav-link hover:text-primary transition-colors">Experience</a>
+                    <a href="#contact" class="nav-link hover:text-primary transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden text-white" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden glass-card mx-4 mb-4 rounded-lg" id="mobileMenu">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#home" class="block hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="block hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="block hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="block hover:text-primary transition-colors">Projects</a>
+                <a href="#experience" class="block hover:text-primary transition-colors">Experience</a>
+                <a href="#contact" class="block hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="space-y-8 animate-slide-up">
+                <div class="space-y-4">
+                    <p class="text-primary text-lg font-medium">Hi, I'm</p>
+                    <h1
+                        class="hero-text text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-primary to-secondary bg-clip-text text-transparent">
+                        Shahbaz
+                    </h1>
+                    <div class="hero-subtitle text-2xl md:text-3xl font-light text-gray-300">
+                        <span class="typing-animation" id="typingText">Android Developer</span>
+                    </div>
+                </div>
+
+                <p class="text-gray-400 text-lg leading-relaxed max-w-lg">
+                    Computer Science student passionate about creating innovative mobile and web applications with
+                    modern technologies. Specializing in Android development and full-stack web solutions.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button
+                        class="bg-gradient-to-r from-primary to-secondary px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105">
+                        <i class="fas fa-download mr-2"></i>
+                        Download CV
+                    </button>
+                    <button
+                        class="border border-primary text-primary px-8 py-4 rounded-full font-semibold hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Get In Touch
+                    </button>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex space-x-6 pt-4">
+                    <a href="https://github.com/shahbazhussaim"
+                        class="text-gray-400 hover:text-primary transition-colors text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Content - 3D Profile -->
+            <div class="relative flex justify-center items-center">
+                <div class="relative">
+                    <!-- Floating Elements -->
+                    <div
+                        class="absolute -top-10 -left-10 w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20 animate-float">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-16 h-16 bg-gradient-to-r from-secondary to-accent rounded-full opacity-20 animate-float"
+                        style="animation-delay: -2s;"></div>
+
+                    <!-- Main Profile Card -->
+                    <div class="glass-card p-8 rounded-3xl hover-lift">
+                        <div
+                            class="w-80 h-80 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                            <!-- Profile Image Placeholder -->
+                            <div
+                                class="w-64 h-64 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-6xl text-white opacity-80"></i>
+                            </div>
+
+                            <!-- Floating Tech Icons -->
+                            <div
+                                class="absolute top-4 right-4 w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center animate-bounce-slow">
+                                <i class="fab fa-java text-white text-xl"></i>
+                            </div>
+                            <div class="absolute bottom-4 left-4 w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center animate-bounce-slow"
+                                style="animation-delay: -1s;">
+                                <i class="fab fa-react text-white text-xl"></i>
+                            </div>
+                            <div class="absolute top-1/2 left-4 w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center animate-bounce-slow"
+                                style="animation-delay: -2s;">
+                                <i class="fab fa-android text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    About Me
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-6">
+                    <div class="glass-card p-8 rounded-2xl hover-lift">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">My Journey</h3>
+                       <p class="text-gray-300 leading-relaxed mb-4">
+    <strong>My Journey</strong><br><br>
+    I'm a Computer Science undergraduate at the Institute of Space and Technology, Islamabad. I have hands-on experience in Object-Oriented Programming (OOP), Data Structures & Algorithms (DSA), and full-stack development.<br><br>
+
+    I'm passionate about developing user-focused, database-driven applications that solve real-world problems. Whether it's web or mobile, I aim to create solutions that are functional, intuitive, and impactful.<br><br>
+
+    Currently, I'm expanding my skills in Android app development using Java and Kotlin, while maintaining proficiency in modern web technologies like React, Next.js, and JavaScript frameworks. I believe in continuous learning and building meaningful projects that make a difference.
+</p>
+
+                        <p class="text-gray-300 leading-relaxed">
+                            Currently advancing my skills in Android app development using Java and Kotlin, while
+                            maintaining expertise in web technologies including React, Next.js, and modern JavaScript
+                            frameworks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Content - Stats -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div class="text-3xl font-bold text-primary mb-2">2+</div>
+                        <div class="text-gray-400">Years Experience</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div class="text-3xl font-bold text-secondary mb-2">15+</div>
+                        <div class="text-gray-400">Projects Completed</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div class="text-3xl font-bold text-accent mb-2">10+</div>
+                        <div class="text-gray-400">Technologies</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div class="text-3xl font-bold text-green-400 mb-2">100%</div>
+                        <div class="text-gray-400">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Technical Skills
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Programming Languages -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-center text-primary">Programming Languages</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-java text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">Java</h4>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                            <div class="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full progress-bar"
+                                style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-android text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">Kotlin</h4>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                            <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full progress-bar"
+                                style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-js text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">JavaScript</h4>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-2 rounded-full progress-bar"
+                                style="width: 88%"></div>
+                        </div>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">C++</h4>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full progress-bar"
+                                style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Technologies -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-center text-secondary">Web Technologies</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-orange-600 to-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-html5 text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">HTML5</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-css3-alt text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">CSS3</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-react text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">React</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-gray-800 to-black rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-node-js text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">Next.js</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-database text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">MySQL</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div>
+                <h3 class="text-2xl font-bold mb-8 text-center text-accent">Tools & Platforms</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-android text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">Android Studio</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-git-alt text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">Git</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">VS Code</h4>
+                    </div>
+
+                    <div class="tech-icon glass-card p-6 rounded-2xl text-center hover-lift">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-firebase text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-semibold text-white">Firebase</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Featured Projects
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Learning Platform -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Live</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">
+                            Course Learning Platform
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                            A comprehensive course management system built with Next.js, React, Express, and MongoDB.
+                            Features user registration, PDF reading, quiz generation, and certificate issuance.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">Next.js</span>
+                            <span class="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">MongoDB</span>
+                            <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">Express</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-secondary transition-colors text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                            <a href="https://github.com/shahbazhussaim/course-platform"
+                                class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Study Timer App -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-clock text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span
+                                class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">Mobile</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">
+                            Study Timer App
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                            Android application built with Kotlin and Room database to track study sessions. Features
+                            timer functionality, subject tracking, and session history with timestamps.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">Kotlin</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">Room DB</span>
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">Android</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-secondary transition-colors text-sm font-medium">
+                                <i class="fas fa-mobile-alt mr-2"></i>Play Store
+                            </a>
+                            <a href="https://github.com/shahbazhussaim/study-timer"
+                                class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Dealership System -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-car text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Web</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">
+                            Car Dealership System
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                            Dynamic vehicle sales platform with secure user authentication, real-time inventory
+                            management, and seamless customer experience for browsing and purchasing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-xs">HTML/CSS</span>
+                            <span
+                                class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">JavaScript</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">SQL</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-secondary transition-colors text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                            <a href="https://github.com/shahbazhussaim/car-dealership"
+                                class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Book Store -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-book text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">C++</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">
+                            Online Book Store
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                            Inventory-based book store system utilizing Data Structures & Algorithms for enhanced
+                            scalability, efficient data processing, and streamlined order handling.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">C++</span>
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">DSA</span>
+                            <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">OOP</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-secondary transition-colors text-sm font-medium">
+                                <i class="fas fa-play mr-2"></i>Demo
+                            </a>
+                            <a href="https://github.com/shahbazhussaim/book-store"
+                                class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Management App -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-teal-500 to-green-600 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-tasks text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span
+                                class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Android</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">
+                            Task Management App
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                            Android application for task management with priority levels, due dates, and notification
+                            system. Built using modern Android architecture patterns.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-xs">Kotlin</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">MVVM</span>
+                            <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs">Jetpack</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-secondary transition-colors text-sm font-medium">
+                                <i class="fas fa-download mr-2"></i>APK
+                            </a>
+                            <a href="https://github.com/shahbazhussaim/task-manager"
+                                class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Website -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-medium">Live</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition-colors">
+                            Portfolio Website
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                            Modern, responsive portfolio website showcasing projects and skills. Built with HTML, CSS,
+                            and JavaScript with smooth animations and mobile-first design.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-xs">HTML</span>
+                            <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs">CSS</span>
+                            <span
+                                class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-xs">JavaScript</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-secondary transition-colors text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Site
+                            </a>
+                            <a href="https://github.com/shahbazhussaim/portfolio"
+                                class="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Experience
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-secondary"></div>
+
+                    <!-- Android Developer -->
+                    <div class="relative mb-12 ml-16">
+                        <div class="absolute -left-10 top-6 w-4 h-4 bg-primary rounded-full border-4 border-dark"></div>
+                        <div class="glass-card p-8 rounded-2xl hover-lift">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">Android Developer</h3>
+                                    <p class="text-primary font-medium">Remote Position</p>
+                                </div>
+                                <span
+                                    class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    Sep 2023 - Present
+                                </span>
+                            </div>
+                            <ul class="text-gray-300 space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mr-3 mt-1"></i>
+                                    Built 5+ components including login screens, navigation drawers, and RecyclerViews
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mr-3 mt-1"></i>
+                                    Implemented SQLite and Firebase integrations for data management
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mr-3 mt-1"></i>
+                                    Followed modern Android architecture patterns like MVVM
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mr-3 mt-1"></i>
+                                    Utilized Jetpack components for enhanced app performance
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Web Developer -->
+                    <div class="relative mb-12 ml-16">
+                        <div class="absolute -left-10 top-6 w-4 h-4 bg-secondary rounded-full border-4 border-dark">
+                        </div>
+                        <div class="glass-card p-8 rounded-2xl hover-lift">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">Web Developer</h3>
+                                    <p class="text-secondary font-medium">Remote Position</p>
+                                </div>
+                                <span
+                                    class="bg-gradient-to-r from-secondary to-accent text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    Sep 2023 - Present
+                                </span>
+                            </div>
+                            <ul class="text-gray-300 space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                    Developed full-stack web applications using HTML/CSS, JavaScript (React), and Python
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                    Built responsive UIs with modern frameworks and libraries
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                    Created REST APIs and integrated with Firebase backend services
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                                    Deployed projects with optimized performance and scalability
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="relative ml-16">
+                        <div class="absolute -left-10 top-6 w-4 h-4 bg-accent rounded-full border-4 border-dark"></div>
+                        <div class="glass-card p-8 rounded-2xl hover-lift">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">Bachelor of Computer Science</h3>
+                                    <p class="text-accent font-medium">Institute of Space and Technology (IST),
+                                        Islamabad</p>
+                                </div>
+                                <span
+                                    class="bg-gradient-to-r from-accent to-orange-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                                    Sep 2023 - Present
+                                </span>
+                            </div>
+                            <ul class="text-gray-300 space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-graduation-cap text-accent mr-3 mt-1"></i>
+                                    Studying advanced computer science concepts and software engineering
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-graduation-cap text-accent mr-3 mt-1"></i>
+                                    Specializing in mobile app development and web technologies
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-graduation-cap text-accent mr-3 mt-1"></i>
+                                    Participating in coding competitions and hackathons
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Get In Touch
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+                    Ready to bring your ideas to life? Let's discuss your next project and create something amazing
+                    together.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass-card p-8 rounded-2xl hover-lift">
+                        <h3 class="text-2xl font-bold mb-6 text-primary">Let's Connect</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Email</p>
+                                    <p class="text-gray-400">shahbazhussainar141@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-secondary to-accent rounded-full flex items-center justify-center">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Phone</p>
+                                    <p class="text-gray-400">+92 321 5780511</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-accent to-orange-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-white">Location</p>
+                                    <p class="text-gray-400">Islamabad, Pakistan</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="mt-8 pt-8 border-t border-gray-700">
+                            <h4 class="text-lg font-semibold mb-4 text-white">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/shahbazhussaim"
+                                    class="w-10 h-10 bg-gray-700 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-github text-white"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-linkedin text-white"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-gray-700 hover:bg-blue-400 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-twitter text-white"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-gray-700 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-instagram text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card p-8 rounded-2xl hover-lift">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Send Message</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400"
+                                    placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <input type="email" required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400"
+                                    placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                            <input type="text" required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400"
+                                placeholder="Project Discussion">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <textarea rows="5" required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400 resize-none"
+                                placeholder="Tell me about your project..."></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary py-4 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105 flex items-center justify-center">
+                            <span id="submitText">Send Message</span>
+                            <i id="submitSpinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div
+                    class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+                    &lt;Shahbaz/&gt;
+                </div>
+                <p class="text-gray-400 mb-4">
+                    &copy; 2024 Shahbaz Hussain. All rights reserved.
+                </p>
+                <p class="text-gray-500 text-sm">
+                    Built with passion using modern web technologies
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typing Animation
+        const typingText = document.getElementById('typingText');
+        const texts = ['Android Developer', 'Web Developer', 'Full Stack Developer', 'Mobile App Developer'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentText = texts[textIndex];
+
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typing animation
+        typeWriter();
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Navbar Background on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+            }
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show loading state
+            submitText.textContent = 'Sending...';
+            submitSpinner.classList.remove('hidden');
+
+            // Simulate form submission
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Show success state
+            submitText.textContent = 'Message Sent!';
+            submitSpinner.classList.add('hidden');
+
+            // Reset form
+            setTimeout(() => {
+                contactForm.reset();
+                submitText.textContent = 'Send Message';
+            }, 2000);
+        });
+
+        // Network Animation
+        function createNetworkLines() {
+            const networkBg = document.getElementById('networkBg');
+
+            setInterval(() => {
+                const line = document.createElement('div');
+                line.className = 'network-line';
+                line.style.top = Math.random() * 100 + '%';
+                line.style.width = Math.random() * 200 + 100 + 'px';
+                networkBg.appendChild(line);
+
+                setTimeout(() => {
+                    line.remove();
+                }, 3000);
+            }, 2000);
+        }
+
+        // Initialize network animation
+        createNetworkLines();
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Animate skill progress bars
+        const skillBars = document.querySelectorAll('.progress-bar');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0%';
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 300);
+                }
+            });
+        }, observerOptions);
+
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
+        });
+    </script>
+</body>
+
+</html>
